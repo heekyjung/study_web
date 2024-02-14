@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 리스트
+        let a_list = []
+        let b_list = [1, 2, 'hey', 3]
+
+        console.log(b_list[0])
+        console.log(b_list[1])
+        console.log(b_list[2])
+
+        b_list.push('헤이') // 리스트에 새로운 데이터 추가
+        console.log(b_list)
+        console.log(b_list.length) // 리스트 길이 출력
+
+        // 딕셔너리(객체)
+        let a_dict = {}
+        let b_dict = {'name': 'Bob', 'age': 21}
+
+        console.log(b_dict['name'])
+        console.log(b_dict['age'])
+
+        b_dict['height'] = 180 // 값을 추가
+        console.log(b_dict)
+
+        // 리스트와 딕셔너리 조합
+        names = [
+            {'name':'bob','age':20},
+            {'name':'carry','age':38}
+        ]
+
+        console.log(names[0]['name'])
+        console.log(names[1]['name'])
+
+        new_name = {'name': 'john', 'age': 7}
+        names.push(new_name)
+
+        console.log(names)
+    </script>
+</body>
+</html>
