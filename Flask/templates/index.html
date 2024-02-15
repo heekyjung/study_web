@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 추천 사이트</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .lotto_ball li {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #FFD700;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 5px;
+        }
+
+        .random_ball li {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 5px;
+        }
+
+        img {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>안녕, {{ data.name }}</h1>
+    <img src="{{ url_for('static', filename='coinman.png')}}" alt="">
+    <h2>로또 번호: {{ data.lotto }}</h2>
+    <h2>랜덤 로또 번호: {{ data.random_lotto }}</h2>
+    <ul class="lotto_ball">
+        {% for element in data.lotto %}
+        <li>{{ element|e }}</li>
+        {% endfor %}    
+    </ul>
+    <ul class="random_ball">
+        {% for element in data.random_lotto %}
+        <li>{{ element|e }}</li>
+        {% endfor %}    
+    </ul>
+
+    <!-- 당첨 개수에 따라 메세지 표시 -->
+    {% if data.common_count == 6 %}
+        <h2>{{ data.common_count }}개 맞았습니다. 1등입니다!!</h2>
+    {% elif data.common_count == 5 %}
+        <h2>{{ data.common_count }}개 맞았습니다. 2등입니다!!</h2>
+    {% elif data.common_count == 4 %}
+        <h2>{{ data.common_count }}개 맞았습니다. 3등입니다!!</h2>
+    {% elif data.common_count == 3 %}
+        <h2>{{ data.common_count }}개 맞았습니다. 4등입니다!!</h2>
+    {% else %}
+        <h2>{{ data.common_count }}개 맞았습니다. 탈락입니다..😥😥</h2>
+    {% endif %}
+    
+
+    
+    <!-- <ol>
+        {% for element in data.lotto %}
+        <li>{{ element|e }}</li>
+        {% endfor %}
+    </ol> -->
+
+</body>
+
+</html>
