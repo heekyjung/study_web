@@ -5,82 +5,87 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>히끼의 홈</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
-        body {
-            background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/webjong/images/background.jpg");
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+        .background-banner {
+            background-image: linear-gradient(45deg,
+                    rgb(51 43 43 / 5%),
+                    rgb(20 19 20 / 5%)), url("https://i.pinimg.com/564x/9b/f6/ce/9bf6ce7cd66359682fb21791fd9c1300.jpg");
+            max-height: 100%;
             background-position: center;
             background-size: cover;
-            color: white;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        } */
-
-        .weather {
-            display: flex;
-            align-items: center;
-            margin-right: 30px;
+        .custom-navbar {
+            border-color: rgb(86, 87, 95, 0.4);
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            background-color: #D6ABC3;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            /* Flex 안의 아이템들을 세로 방향으로 배치합니다. */
-            justify-content: center;
-            /* 주축 방향으로 가운데 정렬합니다. */
-            align-items: center;
-            /* 교차축 방향으로 가운데 정렬합니다. */
-            height: 100vh;
-            text-align: center;
+        .custom-footer {
+            border-color: (63, 64, 70, 0.4);
+            border-top-width: 1px;
+            border-top-style: solid;
+            color: rgb(63, 64, 70);
         }
 
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-            padding: 20px 0;
+        .custom-icon {
+            color: rgb(63, 64, 70);
         }
 
-        .greeting {
-            margin-bottom: 50px;
+        .custom-logo {
+            height: 40px;
+            width: auto;
         }
 
-        .motto {
-            margin-bottom: 100px;
+        .custom-text {
+            color: rgb(86, 87, 95);
         }
 
-        .logo {
-            height: 32px;
-            margin-left: 30px;
+        .sticky-bottom {
+            padding-bottom: 40px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Mali&family=Nanum+Pen+Script&display=swap');
 
         * {
-            font-family: 'Poppins', sans-serif;
+            font-family: "Mali", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .korean {
+            font-family: "Nanum Pen Script", cursive;
+            font-weight: 400;
+            font-style: normal;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <meta property="og:title" content="히끼의 홈" />
+    <meta property="og:description" content="다들 놀러오세요!" />
+    <meta property="og:image" content="https://i.pinimg.com/564x/9b/f6/ce/9bf6ce7cd66359682fb21791fd9c1300.jpg" />
 </head>
 
 <body>
-
-    <nav class="navbar border-bottom border-bottom-dark d-flex justify-content-space-between" data-bs-theme="dark">
-        <div class="ms-3">
-            <img src="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/webjong/images/sparta-logo.svg"
-                alt="">
-        </div>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+    <div class="background-banner">
+        <nav class="navbar custom-navbar d-flex justify-content-between align-items-center sticky-top">
+            <div class="ms-3">
+                <a href="{{ url_for('home') }}">
+                    <img src="https://static.vecteezy.com/system/resources/previews/001/187/438/original/heart-png.png"
+                        alt="" class="custom-logo">
+                </a>
+            </div>
+            <nav class="navbar navbar-expand-lg">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -88,42 +93,52 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                            <a class="nav-link text-secondary" aria-current="page" href="{{ url_for('home')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ url_for('music') }}">Music</a>
+                            <a class="nav-link text-secondary" href="{{ url_for('music')}}">Music</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Album</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white">Movie</a>
+                            <a class="nav-link text-secondary" href="{{ url_for('love') }}">Love</a>
                         </li>
                     </ul>
                 </div>
+            </nav>
+            <div class="d-flex justify-content-center align-items-center mx-4">
+                <h6 id="current-time" class="text-secondary"></h6>
             </div>
         </nav>
-        <div class="weather">
-            <img id="weather-icon">
-            <p id="weather-msg"></p>
-        </div>
-    </nav>
 
-    <div class="container">
-        <div class="greeting">
-            <h1>Hello, {{ data.name }}!</h1>
-            <h1 id="current-time"></h1>
+        <div class="mt-5"></div>
+        <div class="container">
+            <div class="min-vh-100 d-flex flex-column text-center custom-text">
+                <div class="mb-4">
+                    <h1 class="korean">안녕! 나는 {{ data.name }}야 👋</h1>
+                </div>
+
+                <div class="motto">
+                    <h6 class="mb-4">Today's motto for you!</h6>
+                    <h5 id="quoteContent" class="fst-italic"></h5>
+                    <h6 id="quoteAuthor"></h6>
+                </div>
+            </div>
         </div>
 
-        <div class="motto">
-            <h3>My life's motto</h3>
-            <h2>{{ data.motto }}</h2>
+        <div class="container sticky-bottom">
+            <footer>
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 custom-footer">
+                    <p>2024 by Heeky. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="link-body-emphasis" href="https://www.linkedin.com/in/heekyjung/"><i
+                                    class="custom-icon bi bi-linkedin "></i></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="https://github.com/heekyjung"><i
+                                    class="custom-icon bi bi-github"></i></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="https://velog.io/@heeky"><i
+                                    class="custom-icon bi bi-journal-check"></i></a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
-    </div>
-
-    <div class="footer">
-        <p id="quoteAuthor"></p>
-        <p id="quoteContent"></p>
     </div>
 
     <script>
@@ -169,19 +184,6 @@
             $('#quoteContent').text(contentMsg)
 
         })
-        let weather_url = "http://spartacodingclub.shop/sparta_api/weather/seoul";
-        fetch(weather_url)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                let temp = data['temp']
-                let icon_url = data['icon']
-
-                let message = `${temp}ºC`
-                $('#weather-msg').text(message)
-                $('#weather-icon').attr('src', icon_url)
-
-            })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
