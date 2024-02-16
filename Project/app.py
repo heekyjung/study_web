@@ -33,11 +33,11 @@ with app.app_context():
 @app.route("/")
 def home():
     name = '히끼'
-    motto = "보여줄 건 없지만 둘러보렴!"
+    greeting = f"안녕! 나는 {name}야 👋"
 
     context = {
         "name": name,
-        "motto": motto,
+        "greeting": greeting,
     }
     return render_template('motto.html', data=context)
 
@@ -54,11 +54,11 @@ def render_music_filter(username):
 @app.route("/love/")
 @app.route("/love/<name>/")
 def love(name="히끼"):
-    motto = f"{name}의 사랑은 어디에..."
+    greeting = f"💕 {name}의 사랑을 받아줘!💕"
 
     context = {
         'name': name,
-        'motto': motto,
+        'greeting': greeting,
     }
     return render_template('motto.html', data=context)
 
